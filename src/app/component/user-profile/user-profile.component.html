@@ -1,0 +1,61 @@
+<h5>Name : {{namee | titlecase}}</h5>
+<h5>Status : {{status.toUpperCase()}}</h5>
+<h5>Age : {{age}}</h5>
+
+<h6>Phone Number: {{phoneNumber | countrycode}}</h6>
+<button [disabled]="isButtonDisabled">Click Me</button>
+<h1>I am value of input box {{twoWayBindingValue}}</h1>
+<input type="text" [value]="twoWayBindingValue" (input)="onChange($event)">
+
+<!-- Shortcut way : this syntax is called banana in the box-->
+<input type="text" [(ngModel)]="twoWayBindingValue"> 
+
+
+<!-- So in angular 17 they have introduced @For-->
+<div>
+    @for (data of userData; track data.name) {
+       @if(data.age>=31){
+        <h5>Name : {{data.name.toUpperCase()}} Status : {{data.isSingal?"Single":"Coder"}} Age: {{data.age}}</h5>
+       }@else {
+        <h5>Below 31 Name : {{data.name.toUpperCase()}} Status : {{data.isSingal?"Single":"Coder"}} Age: {{data.age}}</h5>
+       }
+
+    }
+</div>
+
+<!-- So before angular 17 directives are being used -->
+<hr />
+<div *ngFor=" let data of userData">
+        <h5 *ngIf="data.age>=31;else elseblock">Name : {{data.name.toUpperCase()}} Status : {{data.isSingal?"Single":"Coder"}} Age: {{data.age}}</h5>
+         <ng-template #elseblock>
+            <h5>Below 31 Name : {{data.name.toUpperCase()}} Status : {{data.isSingal?"Single":"Coder"}} Age: {{data.age}}</h5>
+         </ng-template>   
+    </div>
+
+
+
+ 
+ 
+ <!-- How to communicate from parent to child and chield to parent
+ 1. when data send from parent to child then use @Input 
+ 2. -->
+<div>
+    <h1>Name := {{name}} </h1>
+    <hr />
+    <h1>Desig := {{desig}} </h1>
+    <hr />
+    <h1>Salary := {{salary | currency:"INR"}} </h1>
+    <hr />
+   
+</div>
+
+<div>
+    <button (click)="sendData()">Send data</button>
+</div>
+
+
+
+<!--now learn how to create custom directive-->
+<h5 #myHeading>Name : {{namee | titlecase}} Status : {{status.toUpperCase()}}  Age : {{age}}</h5>
+
+
