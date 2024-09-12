@@ -1,0 +1,18 @@
+#chatbotFrame{
+    transition: width 0.0s ease, height 0.0s ease;
+}
+
+.normal-width {
+    width: 80px;
+    height: 70px;
+  }
+  
+  .toggle-width {
+    width: 650px;
+    height: 520px;
+  }
+  
+  .full-width {
+    width: 1000px;
+    height: 520px;
+  }

@@ -16,6 +16,7 @@ export class HighlightDirective {
   @HostListener("mouseenter")
   changeFontSize(){
     this.el.nativeElement.style.fontSize="40px"
+    
   }
 
   @HostListener("mouseleave")

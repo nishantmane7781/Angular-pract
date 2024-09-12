@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, isSignal, numberAttribute } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, input, isSignal, numberAttribute } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserData } from '../../../model/Userdata';
 import { CountrycodePipe } from '../../pipes/countrycode.pipe';
@@ -17,7 +17,13 @@ return "Hi "+value
   styleUrl: './user-profile.component.css'
 })
 export class UserProfileComponent implements OnChanges,OnInit,AfterViewInit {
-   @Input({transform:formatName}) name!:string
+
+  //now convert that @Input to signals
+  //@Input({transform:formatName}) name!:string
+
+  name=input("Mane Nishant",{
+    transform:formatName
+  })
    @Input({}) desig!:string
    @Input({transform:numberAttribute}) salary!:number
 
@@ -27,7 +33,7 @@ export class UserProfileComponent implements OnChanges,OnInit,AfterViewInit {
 
   phoneNumber=8484003880
    sendData(){
-    this.myEvent.emit({name:"Mane Nishant",salary:3000000})
+    this.myEvent.emit({name:this.name(),salary:3000000})
    }
     namee="nishant"
     status="Unmarried"
